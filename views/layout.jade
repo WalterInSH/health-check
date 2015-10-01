@@ -6,36 +6,24 @@ html
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='stylesheet', href='/css/homepage.css')
     link(rel='stylesheet', href='/css/sweetalert.css')
-    block extra_links
+    block extra-links
   body
     header
       nav.nav-wrapper.teal.darken-3
-        a.brand-logo Join
+        a.brand-logo Health Check
         ul.right.hide-on-med-and-down
           li
             a(href="/") 主页
           li
-              a(href="/event_list") 活动
+              a(href="/checker-list") Checker
           li
             a(href="/help") 帮助
     main
       block content
 
 
-    footer.page-footer.teal.darken-3
-      .container
-        .row
-          .col.l6.s12
-            h5.white-text About Join
-            p.grey-text.text-lighten-4 Join is a project that xxxxxxxxxxxx
-          .col.l4.offset-l2.s12
-            h5.white-text Links
-            ul
-              li
-                a.grey-text.text-lighten-3(href="https://github.com/WalterInSH") Author's github
-
 script(src='/javascripts/jquery-1.11.1.min.js')
 script(src='/javascripts/materialize.min.js')
 script(src='/javascripts/sweetalert.min.js')
 
-block extra_scripts
+block extra-scripts

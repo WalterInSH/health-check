@@ -1,0 +1,28 @@
+extends layout
+
+block extra-links
+    link(rel='stylesheet', href='/css/editor.css')
+
+block content
+    .container.z-depth-1(style='margin-top:30px;padding:20px;')
+        .row
+            .input-field.col.s12
+                input#title(type='text')
+                label(for='title') 标题
+        .row
+            .col.s12.input-field
+                input#url(type='text')
+                label(for='address') URL
+        .row
+            .col.s12.input-field
+                select#frequency
+                    option(value='one-min') 1分钟
+                    option(value='five-min') 5分钟
+                    option(value='fifteen-min') 15分钟
+                    option(value='one-hour') 1小时
+                label 检查频率
+        button#create.waves-effect.waves-light.btn 创建Checker
+
+
+block extra-scripts
+    script(src='/javascripts/module/editor/editor.js')

@@ -5,11 +5,8 @@ module.exports = function (app, mongoose) {
     var CheckerSchema = new Schema({
         checker_id: {type: ObjectId},
         title: {type: String, required: true},
-        time: {type: Date, required: true},
-        address: {type: String, required: true},
-        frequency: {type: String, enum: ['one-time','weekly','biweekly'], required: true},
-        memberLimit: {type: Number, max:10000, required: false},
-        content: {type: String, required: true},
+        frequency: {type: String, enum: ['one-min','five-min','fifteen-min','one-hour'], required: true},
+        url: {type: String, required: true},
         create_date: {type: Date, default: Date.now, required: true}
     });
 
@@ -24,12 +21,12 @@ module.exports = function (app, mongoose) {
         });
     };
 
-    var findEnabledCheckers = function(callback){
-        Checker.find({'time':{$gt:new Date()}}).exec(callback);
+    var findCheckers = function(callback){
+        Checker.find({}).exec(callback);
     };
 
     return {
         createChecker:createChecker,
-        findEnabledCheckers:findEnabledCheckers
+        findCheckers:findCheckers
     }
 };
