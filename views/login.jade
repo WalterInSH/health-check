@@ -1,0 +1,19 @@
+extends layout
+block content
+    .container
+        div(style='margin-top:100px')
+            h4.teal-text.text-darken-3 登录Join
+            form
+                .row
+                    .input-field.col.s12.l6
+                        input#username.validate(type='text')
+                        label(for=username) 用户名
+                .row
+                    .input-field.col.s12.l6
+                        input#password.validate(type='password')
+                        label(for=password) 密码
+                .row
+                    button.waves-effect.waves-light.btn 登录
+
+block extra_scripts
+    script(src='/javascripts/module/user/login.js')
