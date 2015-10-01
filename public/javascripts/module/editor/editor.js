@@ -14,6 +14,8 @@ $('#create').click(function () {
     };
 
     $.post('/new-checker', param).done(function(data){
-
+        swal("Great!", "创建成功", "success");
+    }).fail(function(data){
+        swal("Oops!", "创建失败", "error");
     });
 });
