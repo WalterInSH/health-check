@@ -32,6 +32,7 @@ module.exports=function(app, models){
             url:req.body.url
         }, function(err){
             if(err) {
+                console.warn(err.message);
                 res.send(500);
             }else {
                 res.send(200);
