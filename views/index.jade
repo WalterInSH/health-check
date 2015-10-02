@@ -1,18 +1,21 @@
 extends layout
 
-block content
-  .row.seg
-    .col.s6.center-align
-      img(src="/images/benefit-realtime.png")
-    .col.s6.valign-wrapper
-      div
-        h2 找到适合你的活动
-        a.waves-effect.waves-light.btn-large(href="/checker-list") Checkers!
+block extra-links
+    link(rel='stylesheet', href='/css/jke-d3-ecg.css')
 
-  .row.seg
-    .col.s6.valign-wrapper
-      .right-align
-        h2 轻松报名，到时提醒
-        a.waves-effect.waves-light.btn-large 了解更多!
-    .col.s6.center-align
-      img(src="/images/alarm.png")
+block content
+    .container
+        .jke-ecgChart.center-align
+
+        .row.center-align(style='height:220;width:800')
+            .col.s3.offset-s3
+                a.waves-effect.waves-light.btn-large(href="/checker-list") Checker 列表!
+            .col.s3
+                a.waves-effect.waves-light.btn-large(href="/checker-editor") 创建Checker!
+
+
+block extra-scripts
+    script(src='/javascripts/jquery-ui-widget.min.js')
+    script(src='/javascripts/d3.min.js')
+    script(src='/javascripts/jke-d3-ecg.min.js')
+    script(src='/javascripts/module/index/index.js')
