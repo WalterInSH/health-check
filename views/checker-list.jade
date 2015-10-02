@@ -1,15 +1,23 @@
 extends layout
 
 block content
-    each c in checkers
-        .row.container
-            .col.s8
-                .card.blue-grey.darken-1
-                    .card-content.white-text
-                        span.card-title= c.title
-                        p= c.url
-                    .card-action
-                        a(href="#") 详情
+    table.highlight
+        thead
+            tr
+                th
+                th URL
+                th 状态
+                th
+        tbody
+        each c in checkers
+            tr
+                td= c.title
+                td= c.url
+                td
+                    i.material-icons.red-text warning
+                    i.material-icons.green-text verified_user
+                td
+                    a(href='/checker/'+c.id) 执行历史
 
     .container
         ul.pagination
