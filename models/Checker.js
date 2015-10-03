@@ -21,8 +21,10 @@ module.exports = function (app, mongoose) {
         });
     };
 
-    var findCheckers = function(callback){
-        Checker.find({}).exec(callback);
+    var findCheckers = function(callback, frequency){
+        frequency == undefined?
+            Checker.find({}).exec(callback):
+            Checker.find({'frequency':frequency}).exec(callback);
     };
 
     return {
