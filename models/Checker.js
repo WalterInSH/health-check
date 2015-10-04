@@ -6,7 +6,8 @@ module.exports = function (app, mongoose) {
         frequency: {type: String, enum: ['one-min','five-min','fifteen-min','one-hour'], required: true},
         url: {type: String, required: true},
         is_healthy: {type: Boolean, default: true, required: true},
-        create_date: {type: Date, default: Date.now, required: true}
+        create_date: {type: Date, default: Date.now, required: true},
+        is_enabled:{type: Boolean, default: true, required: true}
     });
 
     var Checker = mongoose.model('Checker', CheckerSchema);
@@ -35,10 +36,26 @@ module.exports = function (app, mongoose) {
             });
     };
 
+    var enable = function (checker_id) {
+        Checker.update({_id: checker_id}, {is_enabled: true}).exec()
+            .onReject(function(err){
+                console.log(err.message);
+            });
+    };
+
+    var disable = function (checker_id) {
+        Checker.update({_id: checker_id}, {is_enabled: false}).exec()
+            .onReject(function(err){
+                console.log(err.message);
+            });
+    };
+
     return {
-        createChecker:createChecker,
-        findCheckers:findCheckers,
-        updateHealthMark:updateHealthMark,
-        findById:findById
-    }
+        createChecker: createChecker,
+        findCheckers: findCheckers,
+        updateHealthMark: updateHealthMark,
+        findById: findById,
+        enable: enable,
+        disable: disable
+    };
 };

@@ -36,6 +36,16 @@ module.exports=function(app, models){
         });
     });
 
+    app.post('/checker/:id/enable', function (req, res) {
+        models.Checker.enable(req.params.id);
+        res.status(200);
+    });
+
+    app.post('/checker/:id/disable', function (req, res) {
+        models.Checker.disable(req.params.id);
+        res.status(200);
+    });
+
     app.post('/new-checker', function (req, res) {
         models.Checker.createChecker({
             title:req.body.title,
@@ -44,9 +54,9 @@ module.exports=function(app, models){
         }, function(err){
             if(err) {
                 console.warn(err.message);
-                res.send(500);
+                res.status(500);
             }else {
-                res.send(200);
+                res.status(200);
             }
         });
     });

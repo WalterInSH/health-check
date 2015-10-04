@@ -1,8 +1,18 @@
 extends layout
 
 block content
-    h3= checker.title
-    div= checker.url
+    h3#cid(data-cid='' + checker.id)= checker.title
+    div
+        b URL:
+        span= checker.url
+    div
+        b 频率:
+        span= checker.frequency
+    div
+        if checker.is_enabled
+            button#disable.waves-effect.waves-light.btn.red 禁用
+        else
+            button#enable.waves-effect.waves-light.btn 启用
 
     table.highlight
         thead
@@ -29,4 +39,7 @@ block content
             li.waves-effect
                 a(href="#!")
                     i.material-icons chevron_right
+
+block extra-scripts
+    script(src='/javascripts/module/checker/checker.js')
 
