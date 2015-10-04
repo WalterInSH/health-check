@@ -1,9 +1,7 @@
 var async = require('async');
-var mail = require('../modules/mail.js')();
 
 module.exports=function(app, models){
     app.get('/checker-list', function (req, res) {
-        mail.sendWarningMail();
         models.Checker.findCheckers(function (err, checkers) {
             if (err) {
                 res.status(500);
@@ -14,7 +12,7 @@ module.exports=function(app, models){
                     checkers:checkers
                 });
             }
-        });
+        },{});
     });
 
     app.get('/checker/:id', function (req, res) {

@@ -1,9 +1,7 @@
 module.exports = function (app, mongoose) {
-    var Schema = mongoose.Schema,
-        ObjectId = Schema.ObjectId;
+    var Schema = mongoose.Schema;
 
     var CheckerSchema = new Schema({
-        checker_id: {type: ObjectId},
         title: {type: String, required: true},
         frequency: {type: String, enum: ['one-min','five-min','fifteen-min','one-hour'], required: true},
         url: {type: String, required: true},
@@ -23,7 +21,6 @@ module.exports = function (app, mongoose) {
     };
 
     var findCheckers = function(callback, options){
-        if(!options) options = {};
         Checker.find(options).exec(callback);
     };
 
