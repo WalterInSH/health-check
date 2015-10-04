@@ -7,6 +7,7 @@ module.exports = function (app, mongoose) {
         title: {type: String, required: true},
         frequency: {type: String, enum: ['one-min','five-min','fifteen-min','one-hour'], required: true},
         url: {type: String, required: true},
+        is_healthy: {type: Boolean, default: true, required: true},
         create_date: {type: Date, default: Date.now, required: true}
     });
 
@@ -21,14 +22,26 @@ module.exports = function (app, mongoose) {
         });
     };
 
-    var findCheckers = function(callback, frequency){
-        frequency == undefined?
-            Checker.find({}).exec(callback):
-            Checker.find({'frequency':frequency}).exec(callback);
+    var findCheckers = function(callback, options){
+        if(!options) options = {};
+        Checker.find(options).exec(callback);
+    };
+
+    var findById = function(id, callback){
+        Checker.findById(id).exec(callback);;
+    };
+
+    var updateHealthMark = function (checker_id,new_status) {
+        Checker.update({id: checker_id}, {is_healthy: new_status})
+            .onReject(function(err){
+                console.log(err.message);
+            });
     };
 
     return {
         createChecker:createChecker,
-        findCheckers:findCheckers
+        findCheckers:findCheckers,
+        updateHealthMark:updateHealthMark,
+        findById:findById
     }
 };

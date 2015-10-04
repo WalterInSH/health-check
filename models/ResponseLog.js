@@ -19,8 +19,8 @@ module.exports = function (app, mongoose) {
         });
     };
 
-    var findResponseLogs = function(callback){
-        ResponseLog.find({}).exec(callback);
+    var findResponseLogs = function(conditions, callback){
+        ResponseLog.find(conditions).exec(callback);
     };
 
     return {
