@@ -20,7 +20,7 @@ module.exports = function (app, mongoose) {
     };
 
     var findResponseLogs = function(conditions, callback){
-        ResponseLog.find(conditions).exec(callback);
+        ResponseLog.find(conditions).sort('-create_date').exec(callback);
     };
 
     return {

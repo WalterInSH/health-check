@@ -21,7 +21,7 @@ module.exports = function (app, mongoose) {
     };
 
     var findCheckers = function(callback, options){
-        Checker.find(options).exec(callback);
+        Checker.find(options).sort('-create_date').exec(callback);
     };
 
     var findById = function(id, callback){
