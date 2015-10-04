@@ -25,11 +25,11 @@ module.exports = function (app, mongoose) {
     };
 
     var findById = function(id, callback){
-        Checker.findById(id).exec(callback);;
+        Checker.findById(id).exec(callback);
     };
 
     var updateHealthMark = function (checker_id,new_status) {
-        Checker.update({id: checker_id}, {is_healthy: new_status})
+        Checker.update({_id: checker_id}, {is_healthy: new_status}).exec()
             .onReject(function(err){
                 console.log(err.message);
             });

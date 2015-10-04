@@ -14,8 +14,11 @@ block content
                 td= c.title
                 td= c.url
                 td
-                    i.material-icons.red-text warning
-                    i.material-icons.green-text verified_user
+                    if c.is_healthy
+                        i.material-icons.green-text verified_user
+                    else
+                        i.material-icons.red-text warning
+
                 td
                     a(href='/checker/'+c.id) 执行历史
 
