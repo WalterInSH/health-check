@@ -1,6 +1,9 @@
 extends layout
 
 block content
+    div
+        a.waves-effect.waves-light.btn(href="/checker-editor") 创建Checker
+
     table.highlight
         thead
             tr
@@ -14,11 +17,13 @@ block content
                 td= c.title
                 td= c.url
                 td
-                    if c.is_healthy
-                        i.material-icons.green-text verified_user
+                    if c.is_enabled
+                        if c.is_healthy
+                            i.material-icons.green-text verified_user
+                        else
+                            i.material-icons.red-text warning
                     else
-                        i.material-icons.red-text warning
-
+                        i.material-icons.yellow-text not_interested
                 td
                     a(href='/checker/'+c.id) 执行历史
 
