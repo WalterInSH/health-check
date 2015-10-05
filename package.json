@@ -1,13 +1,17 @@
 {
-  "name": "join",
+  "name": "health-check",
   "version": "1.0.0",
-  "description": "A project aimed at organizing group events and reservations",
+  "description": "check if your website fails",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:WalterInSH/health-check.git"
+  },
   "author": "WalterInSH",
-  "license": "MIT",
+  "license": "Apache License",
   "dependencies": {
     "async": "^1.4.2",
     "body-parser": "~1.13.2",
@@ -21,7 +25,6 @@
     "mongodb": "~2.0.39",
     "mongoose": "~4.0.7",
     "morgan": "~1.6.0",
-    "nedb": "~1.1.2",
     "nodemailer": "^1.5.0",
     "nodemailer-markdown": "^1.0.0",
     "request": "^2.64.0",
